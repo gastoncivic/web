@@ -1,0 +1,14 @@
+#accesoWhatsapp {
+  margin-top: 18px;
+  padding: 12px 24px;
+  font-size: 1.1em;
+  color: #fff;
+  background: #25d366;
+  border-radius: 6px;
+  text-decoration: none;
+  display: none;
+}
+#accesoWhatsapp img {
+  vertical-align: middle;
+  margin-right: 6px;
+}
