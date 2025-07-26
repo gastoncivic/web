@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: backend-mercadopago
+    runtime: python
+    repo: https://github.com/gastoncivico/web
+    branch: main
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn -b 0.0.0.0:$PORT pagos.app:app"
+    envVars:
+      - key: MP_ACCESS_TOKEN
+        value: "APP_USR-2170782507035435-072523-516eabfbbb88e5caaa73c1f17f2b821a-79573563"
+    region: oregon
