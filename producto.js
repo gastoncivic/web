@@ -1,25 +1,52 @@
-[
-  {
-    "nombre": "Davinci - EGR/DPF OFF para Ford, PSA y VAG",
-    "descripcion": "Solución profesional para anular EGR y DPF en múltiples ECUs. Incluye soporte técnico y actualizaciones.",
-    "precio": "65000",
-    "imagen": "producto_davinci_3.png",
-    "video": "https://www.youtube.com/embed/Gd8bFQfptTg",  
-    "mercadopago": "https://mpago.la/angelgastonc2009.mp",
-    "paypal": "https://www.paypal.me/angelgastoncalvo",
-    "whatsapp": "https://api.whatsapp.com/send/?phone=5492804335311&text=Quiero%20consultar%20sobre%20Davinci",
-    "destacado": true
-  },
-  {
-    "nombre": "HP Cars Bin Compare (Comparador binario para ECU)",
-    "descripcion": "Herramienta avanzada para comparar, editar y transferir diferencias entre archivos binarios ECU. Ideal para programadores del rubro.",
-    "precio": "38500",
-    "imagen": "bin_compare.jpg",
-    "video": "",
-    "mercadopago": "https://mpago.la/angelgastonc2009.mp",
-    "paypal": "https://www.paypal.me/angelgastoncalvo",
-    "whatsapp": "https://api.whatsapp.com/send/?phone=5492804335311&text=Quiero%20consultar%20por%20Bin%20Compare",
-    "destacado": true
-  }
-  // Puedes seguir agregando más productos igual, y poner "destacado": true a los que desees en el carrusel.
-]
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = parseInt(urlParams.get("id"));
+  const contenedor = document.getElementById("ficha-producto");
+
+  fetch("producto.js")
+    .then(res => res.text())
+    .then(texto => {
+      // Extraer JSON desde el JS
+      const jsonInicio = texto.indexOf("[");
+      const jsonFinal = texto.lastIndexOf("]") + 1;
+      const jsonTexto = texto.substring(jsonInicio, jsonFinal);
+      const productos = JSON.parse(jsonTexto);
+
+      const prod = productos[id];
+      if (!prod) {
+        contenedor.innerHTML = "<h2>Producto no encontrado.</h2>";
+        return;
+      }
+
+      let html = `
+        <img src="${prod.imagen}" class="prod-ficha-img" alt="${prod.nombre}" />
+        <div class="prod-ficha-nombre">${prod.nombre}</div>
+        <div class="prod-ficha-precio">$${parseInt(prod.precio).toLocaleString()}</div>
+        <div class="prod-ficha-desc">${prod.descripcion}</div>
+      `;
+
+      if (prod.video) {
+        html += `
+          <div style="margin:20px auto;max-width:100%;text-align:center;">
+            <iframe width="100%" height="215" src="${prod.video}" 
+              title="Video de producto" frameborder="0" allowfullscreen></iframe>
+          </div>`;
+      }
+
+      html += `
+        <div class="prod-btns">
+          <a href="${prod.mercadopago}" class="tn-btn tn-btn-success" target="_blank">💳 Comprar con MercadoPago</a>
+          <a href="${prod.paypal}" class="tn-btn tn-btn-primary" target="_blank">💲 Comprar con PayPal</a>
+        </div>
+        <div class="prod-contacto">
+          <a href="${prod.whatsapp}" class="tn-btn tn-btn-wsp" target="_blank">📲 Consultar por WhatsApp</a>
+        </div>
+      `;
+
+      contenedor.innerHTML = html;
+    })
+    .catch(err => {
+      console.error("Error al cargar productos:", err);
+      contenedor.innerHTML = "<h2>Error al cargar el producto.</h2>";
+    });
+});
