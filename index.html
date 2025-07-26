@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- SEO HP Cars - Integrado -->
+  <title>HP Cars | Software automotriz premium - Comparador binario, DTC OFF, EGR OFF y más</title>
+  <meta name="description" content="Desde Argentina al mundo: software automotriz premium, comparador binario, DTC OFF, EGR OFF, soluciones profesionales y soporte real para el rubro. Compra segura.">
+  <meta name="keywords" content="software automotriz, comparador binario, DTC OFF, EGR OFF, ECU, HP Cars, soluciones automotrices, reprogramación, herramientas, Argentina, premium">
+
+  <!-- Open Graph para compartir en WhatsApp/Facebook -->
+  <meta property="og:title" content="HP Cars | Software automotriz premium">
+  <meta property="og:description" content="Comparador binario, DTC OFF, EGR OFF, soluciones profesionales. Compra segura y soporte real para el rubro automotriz.">
+  <meta property="og:image" content="https://hp-cars.web.app/logo.png">
+  <meta property="og:url" content="https://hp-cars.web.app">
+  <meta property="og:type" content="website">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- 🚩 Scripts de Firebase SIEMPRE ANTES de main.js -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <div class="tapiz"></div>
+  <header class="header-principal">
+    <img src="logo.png" alt="HP Cars Logo" class="logo">
+    <div class="header-content">
+      <h1>HP Cars</h1>
+      <span class="slogan">Software automotriz premium. Asistencia al rubro.</span>
+    </div>
+    <nav>
+      <a href="#inicio" class="nav-link active">Inicio</a>
+      <a href="#productos" class="nav-link">Productos</a>
+      <a href="#" class="nav-link" id="nav-contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- CARRUSEL DE DESTACADOS -->
+  <section id="destacados" class="seccion-carrusel">
+    <h2>Productos destacados</h2>
+    <div id="carrusel-destacados" class="carrusel">
+      <button id="prev-destacado" class="carrusel-btn">&#8592;</button>
+      <div id="carrusel-items" class="carrusel-items"></div>
+      <button id="next-destacado" class="carrusel-btn">&#8594;</button>
+    </div>
+  </section>
+
+  <section id="inicio" class="seccion-hero fadein">
+    <div class="banner" id="banner-publico">
+      <span class="bienvenida">
+        Desde Argentina al mundo con soluciones automotrices.<br>
+        Asistencia y respaldo al rubro.
+      </span>
+    </div>
+    <div class="logos-pago">
+      <img src="whatsapp.png" alt="WhatsApp" class="logo-pago">
+      <img src="mercadopago.png" alt="MercadoPago" class="logo-pago">
+      <img src="paypal.png" alt="PayPal" class="logo-pago">
+    </div>
+    <a href="#productos" class="btn-ver-productos pulse">Ver productos</a>
+    <div class="confianza">
+      <span class="confianza-icon">🔒</span>
+      Pagos 100% protegidos. Compra segura y soporte real.
+    </div>
+  </section>
+
+  <main>
+    <section id="productos" class="seccion-productos">
+      <h2>Nuestros productos</h2>
+      <div id="catalogo-productos" class="catalogo-productos"></div>
+      <div class="confianza-pie">
+        <b>¿Dudas?</b> Pagos protegidos, entrega inmediata y atención 24/7.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="reputacion">
+      <span>★ ★ ★ ★ ★ 4.9/5 | Más de 1800 clientes satisfechos</span>
+    </div>
+    <div class="footer-datos">
+      <span>HP Cars | Software automotriz premium</span>
+      <span>Asistencia a profesionales del rubro</span>
+      <span>
+        <b>Contacto:</b>
+        <a href="mailto:angelgastoncalvo@gmail.com">angelgastoncalvo@gmail.com</a>
+        &nbsp;|&nbsp;
+        <a href="https://api.whatsapp.com/send/?phone=5492804335311&text=Hola%2C+quiero+consultar+por+software+HP+Cars" target="_blank">WhatsApp</a>
+      </span>
+      <span>© 2025 HP Cars. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- Modal Ficha Producto -->
+  <div id="modal-producto" class="modal-producto">
+    <div class="modal-contenido">
+      <button class="cerrar-modal" id="cerrar-modal">&times;</button>
+      <div id="ficha-producto"></div>
+    </div>
+  </div>
+
+  <!-- Modal Compra -->
+  <div id="modal-compra" class="modal-compra">
+    <div class="modal-compra-contenido">
+      <button class="cerrar-modal" id="cerrar-compra">&times;</button>
+      <div class="compra-titulo">Compra protegida</div>
+      <div class="compra-msg">Ingrese su correo electrónico para recibir su comprobante y continuar con el pago.</div>
+      <form id="form-correo">
+        <input type="email" id="correo-cliente" placeholder="Su correo electrónico" required autocomplete="email">
+        <button type="submit">Continuar al pago</button>
+      </form>
+      <div class="compra-confianza">
+        <span>🔒</span>
+        Sus datos están protegidos. Atención y soporte real a su correo.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Botón de contacto en el menú - Abre WhatsApp directo
+    document.addEventListener('DOMContentLoaded', function() {
+      var contacto = document.getElementById('nav-contacto');
+      if(contacto) {
+        contacto.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open('https://api.whatsapp.com/send/?phone=5492804335311&text&type=phone_number&app_absent=0', '_blank');
+        });
+      }
+    });
+  </script>
+  <!-- 🚩 main.js AL FINAL, así el DOM SIEMPRE está listo -->
+  <script src="main.js"></script>
+</body>
+</html>

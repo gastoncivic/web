@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin HP Cars</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <!-- Biblioteca de Storage de Firebase para permitir subir archivos -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+</head>
+<body>
+  <h2>Panel de administración HP Cars</h2>
+
+  <div id="login-box" style="display:none;">
+    <p>Ingresa con Google autorizado para administrar la tienda.</p>
+    <button id="btn-google-login">Iniciar sesión con Google</button>
+  </div>
+
+  <div id="admin-box" style="display:none;">
+    <div class="admin-bloque">
+      <h3>Banner público (se muestra en la web)</h3>
+      <textarea id="banner-input" style="width:98%;height:60px;"></textarea>
+      <button id="guardar-banner" style="margin-left:10px;">Guardar banner</button>
+      <div>
+        <b>Preview:</b>
+        <div id="preview-banner" style="background:#ffe4b0;padding:10px 16px;margin-top:4px;border-radius:8px;"></div>
+      </div>
+    </div>
+
+    <div class="admin-bloque">
+      <h3>Productos</h3>
+      <form id="form-producto">
+        <input id="nombre" placeholder="Nombre" required>
+        <input id="precio" type="number" placeholder="Precio" required>
+        <input id="imagen" placeholder="Imagen (nombre o varias separadas por coma)">
+        <!-- Nuevo campo para subir imágenes desde el equipo -->
+        <input id="imagenUpload" type="file" multiple accept="image/*" style="margin-top:8px;">
+        <input id="video" placeholder="Link de YouTube">
+        <input id="ventas" type="number" placeholder="Ventas (ej: 250)" min="0">
+        <input id="estrellas" type="number" placeholder="Reputación estrellas (ej: 4.9)" step="0.1" min="0" max="5">
+        <label><input type="checkbox" id="destacado"> Destacado</label>
+        <textarea id="descripcion" placeholder="Descripción"></textarea>
+        <button type="submit">Guardar producto</button>
+      </form>
+      <div id="tabla-productos"></div>
+    </div>
+
+    <!-- SECCIÓN SOLICITUDES -->
+    <div class="admin-bloque">
+      <h3>Solicitudes de clientes (ventas/consultas)</h3>
+      <div id="tabla-solicitudes">
+        <div style="color:#aaa;">Cargando solicitudes...</div>
+      </div>
+      <button id="descargar-solicitudes" style="margin-top:8px;display:none;">Descargar solicitudes</button>
+    </div>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>

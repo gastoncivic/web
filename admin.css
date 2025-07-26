@@ -1,0 +1,212 @@
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  background: #19192a;
+  color: #fafafa;
+  min-height: 100vh;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  background: #23234a;
+  padding: 22px 36px 10px 36px;
+  box-shadow: 0 2px 16px #0005;
+  gap: 18px;
+  border-radius: 0 0 1.7rem 1.7rem;
+}
+
+.logo-admin {
+  width: 54px;
+  height: 54px;
+  border-radius: 13px;
+  background: #28284c;
+  object-fit: contain;
+  box-shadow: 0 1px 8px #1a1a2b45;
+}
+
+.admin-header h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin: 0 0 3px 0;
+  color: #ffdc7c;
+}
+
+.admin-slogan {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #ffe4b0;
+  margin-left: auto;
+}
+
+main {
+  max-width: 820px;
+  margin: 28px auto 0 auto;
+  padding: 0 14px 22px 14px;
+}
+
+.seccion-admin h2 {
+  font-size: 1.45rem;
+  color: #ffdc7c;
+  margin-bottom: 24px;
+}
+
+.admin-bloque {
+  background: linear-gradient(130deg, #222245 70%, #19192a 100%);
+  border-radius: 1.3rem;
+  box-shadow: 0 1px 9px #21213d66;
+  padding: 23px 17px 18px 17px;
+  margin-bottom: 32px;
+}
+
+.admin-bloque h3 {
+  font-size: 1.14rem;
+  color: #ffdc7c;
+  margin-bottom: 14px;
+}
+
+textarea,
+input[type="text"],
+input[type="url"] {
+  width: 95%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #18182a;
+  margin-bottom: 9px;
+  font-size: 1rem;
+  background: #222245;
+  color: #fff;
+}
+
+textarea {
+  min-height: 54px;
+  max-height: 200px;
+  resize: vertical;
+}
+
+button,
+input[type="submit"],
+.login-google-btn {
+  background: linear-gradient(90deg,#ffbe4b,#ffdc7c 90%);
+  color: #21213d;
+  border: none;
+  border-radius: 11px;
+  padding: 11px 32px;
+  font-size: 1.07rem;
+  font-weight: 700;
+  margin-top: 9px;
+  margin-bottom: 3px;
+  box-shadow: 0 1px 8px #ffdc7c45;
+  cursor: pointer;
+  transition: background 0.14s, color 0.11s, transform 0.15s;
+}
+button:hover,
+.login-google-btn:hover {
+  background: linear-gradient(90deg,#ffdc7c 30%, #ffbe4b 100%);
+  color: #232342;
+  transform: scale(1.03);
+}
+
+.preview-banner {
+  background: #21213d;
+  border-radius: 1rem;
+  color: #ffdc7c;
+  padding: 12px 9px;
+  margin-top: 8px;
+  min-height: 38px;
+  font-size: 1.07rem;
+  box-shadow: 0 1px 7px #19192a55;
+}
+
+.tabla-admin {
+  width: 100%;
+  border-collapse: collapse;
+  background: #23234a;
+  border-radius: 1rem;
+  margin-top: 9px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px #19192a55;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+  padding: 10px 9px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.tabla-admin th {
+  background: #23234a;
+  color: #ffdc7c;
+  font-weight: 700;
+  border-bottom: 2px solid #ffdc7c33;
+}
+
+.tabla-admin td {
+  background: #19192a;
+  border-bottom: 1px solid #23234a;
+  color: #fafafa;
+}
+
+.tabla-admin td button {
+  background: #ffdc7c;
+  color: #232342;
+  border-radius: 6px;
+  padding: 5px 18px;
+  margin-right: 4px;
+  margin-bottom: 0;
+  box-shadow: none;
+  font-size: 0.96rem;
+}
+.tabla-admin td button:hover {
+  background: #ffbe4b;
+  color: #18182a;
+}
+
+.admin-footer {
+  background: #21213d;
+  color: #ffdc7c;
+  text-align: center;
+  padding: 18px 0;
+  margin-top: 38px;
+  font-size: 1.04rem;
+  border-radius: 1.3rem 1.3rem 0 0;
+}
+
+/* Login Google */
+.login-google-btn {
+  display: inline-block;
+  margin: 22px 0 0 0;
+  font-size: 1.14rem;
+  font-weight: 700;
+  padding: 12px 36px;
+  background: linear-gradient(90deg, #4285F4 50%, #ffbe4b 95%);
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #23234240;
+}
+.login-google-btn:hover {
+  background: linear-gradient(90deg,#ffdc7c 30%, #4285F4 100%);
+  color: #232342;
+}
+
+.msg-login {
+  color: #ffbe4b;
+  font-size: 1.09rem;
+  margin: 14px 0 0 0;
+}
+
+@media (max-width: 600px) {
+  .admin-header {
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 10vw 7px 10vw;
+    border-radius: 0 0 1.2rem 1.2rem;
+  }
+  main {
+    padding: 0 3vw 14vw 3vw;
+  }
+  .admin-bloque { padding: 4vw 3vw 4vw 3vw; }
+  .tabla-admin th, .tabla-admin td { padding: 6px 4px; font-size: 0.96rem;}
+  .admin-footer { padding: 12px 0; font-size: 0.97rem; }
+}

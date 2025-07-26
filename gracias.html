@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¡Pago Exitoso! | HP Cars</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background: #18182a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .gracias-container {
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px #0002;
+      background: #232342e0;
+      max-width: 410px;
+    }
+    .gracias-container h1 {
+      color: #25d366;
+      font-size: 2.6rem;
+      margin-bottom: 18px;
+    }
+    .gracias-container p {
+      color: #ffe4b0;
+      font-size: 1.23rem;
+      margin-bottom: 30px;
+    }
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      background: #25d366;
+      color: #fff;
+      font-size: 1.22rem;
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px #25d36640;
+      font-weight: bold;
+      transition: background .2s;
+    }
+    .wa-btn:hover {
+      background: #20a820;
+    }
+    .wa-btn img {
+      width: 32px;
+      height: 32px;
+      margin-right: 14px;
+    }
+    @media (max-width: 500px) {
+      .gracias-container {
+        padding: 18px 4px;
+      }
+      .gracias-container h1 {
+        font-size: 1.6rem;
+      }
+      .wa-btn {
+        font-size: 1rem;
+        padding: 10px 14px;
+      }
+      .wa-btn img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gracias-container">
+    <h1>¡Pago exitoso!</h1>
+    <p>Gracias por tu compra.<br>
+      En breve te contactaremos para enviarte tu producto.<br>
+      Si querés acelerar la entrega, tocá el botón de WhatsApp y mandanos tu comprobante.</p>
+    <a class="wa-btn" href="https://api.whatsapp.com/send/?phone=5492804335311&text=Hola!%20Acabo%20de%20pagar%20en%20HP%20Cars%20y%20quiero%20recibir%20mi%20producto!" target="_blank">
+      <img src="whatsapp.png" alt="WhatsApp"> Contactar por WhatsApp
+    </a>
+  </div>
+</body>
+</html>

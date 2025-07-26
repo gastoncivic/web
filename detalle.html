@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle de Producto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="detalle-producto">
+    <h1 id="nombreProducto">Remera oversize "HYPE"</h1>
+    <h2>
+      Precio: <span id="precioProducto">15900</span> ARS
+      <span id="precioUSD" style="font-size:0.85em; color:gray;"></span>
+    </h2>
+    <!-- Botón MercadoPago -->
+    <button id="btnPagarMP">Comprar con MercadoPago</button>
+    <!-- Botón PayPal Smart Button -->
+    <div id="paypal-button-container" style="margin-top:12px;"></div>
+    <!-- Botón WhatsApp oculto, visible solo tras pago -->
+    <a href="https://api.whatsapp.com/send/?phone=5492804335311&text=Hola! Quiero coordinar la entrega de mi compra..."
+       id="accesoWhatsapp" style="display:none;" target="_blank">
+      <img src="whatsapp.png" alt="WhatsApp" style="width:32px;vertical-align:middle;">
+      Acceder a WhatsApp para entrega
+    </a>
+    <!-- Resto de tu ficha, imágenes, preguntas, etc -->
+  </div>
+  <script src="detalle.js"></script>
+</body>
+</html>

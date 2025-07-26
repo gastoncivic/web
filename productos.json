@@ -1,0 +1,41 @@
+[
+  {
+    "nombre": "software davinci 10.35",
+    "descripcion": "funcionando para dtc ",
+    "precio": "199.000",
+    "imagen": [
+      "producto_davinci_3.png",
+      "producto_davinci_4.png",
+      "producto_davinci_5.png"
+    ],
+    "video": "https://www.youtube.com/channel/UCd1ionv7XsuUYRLBNyCLNwg",
+    "mercadopago": "https://mpago.la/1i5t86T",
+    "paypal": "https://paypal.me/hpcars?country.x=AR&locale.x=es_XC",
+    "whatsapp": "https://wa.me/+5492804335311",
+    "destacado": true
+  },
+  {
+    "nombre": "davvinci",
+    "descripcion": "xxxxxxxxxxxxxxxxxxxxxxnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+    "precio": "188.000",
+    "imagen": "producto_davinci_3.png",
+    "video": "https://youtu.be/bUruTWqr1hg",
+    "mercadopago": "https://mpago.la/1i5t86T",
+    "paypal": "https://paypal.me/hpcars?country.x=AR&locale.x=es_XC",
+    "whatsapp": "https://wa.me/+5492804335311",
+    "destacado": true
+  },
+  {
+    "nombre": "edc16 vag inmo off",
+    "descripcion": "",
+    "precio": "120000",
+    "imagen": "AM.png",
+    "video": "",
+    "mercadopago": "",
+    "paypal": "",
+    "whatsapp": "https://wa.me/+5492804335311",
+    "destacado": true,
+    "ventas": 11,
+    "estrellas": 4.7
+  }
+]
