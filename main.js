@@ -19,7 +19,7 @@ const ICON_WHATSAPP = `<img src="whatsapp.png" alt="WhatsApp" style="height:22px
 
 // URL base de la API para MercadoPago. Durante el desarrollo puede ser 'http://localhost:5000'.
 // En producción deberás sustituirla por la URL donde tengas desplegado tu backend Flask.
-const MP_API_BASE = 'http://localhost:5000';
+const MP_API_BASE = 'https://web-1-k0os.onrender.com';
 
 // === Funciones de pago integradas ===
 // Convierte una cadena de precio ARS con separadores de miles (p.ej. "120000" o "199.000") en número

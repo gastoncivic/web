@@ -18,6 +18,7 @@ def log_debug(info):
     with open(DEBUG_FILE, "a", encoding="utf8") as f:
         f.write(line)
 
+# Token de Mercado Pago (producción)
 ACCESS_TOKEN = os.getenv(
     "MP_ACCESS_TOKEN",
     "APP_USR-2170782507035435-072523-516eabfbbb88e5caaa73c1f17f2b821a-79573563"
@@ -49,19 +50,27 @@ def crear_preference():
         data = request.get_json(force=True) or {}
         log_debug(f"==> /crear_preference | DATA RECIBIDA: {data}")
 
-        title = data.get('title') or 'Producto'
-        quantity = int(data.get('quantity', 1))
-        price = float(data.get('price', 0) or 0)
-        if price <= 0:
+        # Permite ambos formatos: directo o items
+        if "items" in data:
+            items = data["items"]
+        else:
+            title = data.get('title') or 'Producto'
+            quantity = int(data.get('quantity', 1))
+            price = float(data.get('price', 0) or 0)
+            currency_id = data.get("currency_id", "ARS")
+            items = [{
+                "title": title,
+                "quantity": quantity,
+                "currency_id": currency_id,
+                "unit_price": price
+            }]
+        # Validación
+        if not items or float(items[0].get("unit_price", 0)) <= 0:
             log_debug("==> /crear_preference | ERROR: Precio menor o igual a 0")
             return jsonify({"error": "El precio debe ser mayor a cero."}), 400
 
         preference_data = {
-            "items": [{
-                "title": title,
-                "quantity": quantity,
-                "unit_price": price
-            }],
+            "items": items,
             "back_urls": {
                 "success": data.get("back_url_success", "http://localhost:5500/detalle.html?ok=1"),
                 "failure": data.get("back_url_failure", "http://localhost:5500/detalle.html?fail=1")
@@ -88,7 +97,6 @@ def crear_preference():
         response = preference_response.get('response', {})
         if not response:
             log_debug("==> /crear_preference | ERROR: RESPONSE VACIO")
-        # Devuelve siempre el punto correcto de inicio (sandbox o real)
         if ACCESS_TOKEN.startswith('TEST-'):
             init_point = response.get('sandbox_init_point') or response.get('init_point')
         else:
