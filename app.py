@@ -7,7 +7,6 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-# Confirma con un log visible en Render que es la versión actualizada
 app.logger.info("=== INICIO APP.PY ACTUALIZADO ===")
 
 ACCESS_TOKEN = os.getenv(
@@ -54,8 +53,10 @@ def crear_preference():
         preference_data["notification_url"] = notif_url
     try:
         preference_response = sdk.preference().create(preference_data)
-        # SOLO este log se verá en Render
-        app.logger.info("=== RESPUESTA MP === %s", preference_response)
+        app.logger.info("=== RESPUESTA MP RAW === %s", preference_response)
+        app.logger.info("=== MP SUBRESPONSE === %s", preference_response.get('response'))
+        if preference_response.get('status') != 201:
+            app.logger.error("=== ERROR MP BODY === %s", preference_response.get('body'))
     except Exception as e:
         app.logger.error(f"Error creando preferencia: {e}")
         return jsonify({"error": "No se pudo crear la preferencia de pago."}), 500
