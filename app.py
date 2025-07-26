@@ -39,8 +39,8 @@ def crear_preference():
     preference_data = {
         "items": [{
             "title": data.get('title', 'Producto'),
-            "quantity": 1,
-            "unit_price": float(data.get('unit_price', 0) or 0)
+            "quantity": int(data.get('quantity', 1)),
+            "unit_price": float(data.get('price', 0) or 0)
         }],
         "back_urls": {
             "success": data.get("back_url_success", "http://localhost:5500/detalle.html?ok=1"),
