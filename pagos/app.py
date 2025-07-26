@@ -129,6 +129,11 @@ def webhook_mp():
         preference_id = order.get("id")
         if preference_id and status == "approved":
             save_pago(preference_id, {"status": "approved", "metodo": "mp"})
+        # Guarda respaldo en archivo local
+        with open("pagos_aprobados.txt", "a") as f:
+            json.dump(payment, f)
+            f.write("\n")
+
     return "OK", 200
 
 @app.route('/estado_pago/<pago_id>')
@@ -138,6 +143,10 @@ def estado_pago(pago_id):
         return jsonify(pago)
     return jsonify({"status": "not_found"})
 
+
+@app.route('/')
+def home():
+    return 'API OK', 200
 if __name__ == "__main__":
     # Al ejecutar desde línea de comandos, permite configurar el host y el puerto
     # mediante variables de entorno. Por defecto, escucha en todas las

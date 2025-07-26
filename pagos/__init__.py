@@ -11,3 +11,4 @@ discover the application when specifying ``pagos`` as the module.
 from .app import app  # noqa: F401  re-export the Flask app
 
 __all__ = ["app"]
+__all__ = ["app"]
